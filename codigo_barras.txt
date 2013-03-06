@@ -1,0 +1,29 @@
+<?php
+//función creada por f0n para generar ese dígito verificador
+function ean($cadena)//función para generar el control de verificación de un código de barras EAN13 (son 12 dígitos y el de control separado por un guión)
+{
+    $cadena = strrev($cadena);//se presentan los 12 números de manera inversa
+    $i = 0;
+    while($i < strlen($cadena))
+    {
+     if($i%2 == 0) $impares += $cadena[$i];//se suman los impares
+     else $pares += $cadena[$i];//se suman los pares
+    $i++;
+}
+$suma = $pares + ($impares*3); //se realiza la suma de los pares con el resultado de multiplicar la suma de los impares por 3
+return 10 -($suma%10);//se resta a 10 el resto de dividir esa suma por 10.
+}
+
+// Prueba
+$numeros="123456789041";//12 dígitos de un código de barras EAN13.
+echo $numeros.'<br />';
+$control= ean($numeros); // devuelve el código de control
+echo 'código de barras: '.$numeros.$control.'<br />';
+
+
+
+    require_once 'Image/Barcode.php';
+    Image_Barcode::draw('1234', 'int25', 'png');
+
+
+?>
