@@ -17,9 +17,6 @@ public class SumarNumeros {
 
       suma = intNumero1 + intNumero2;
 
-      JOptionPane.showMessageDialog(
-         null, "La suma es " + suma, "Resultado,",
-         JOptionPane.PLAIN_MESSAGE );
-     System.exit( 0 );  
+       
   } 
 }
