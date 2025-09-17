@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora de suma</title>
+    <link rel="stylesheet" href="{% static 'calculadora/styles.css' %}">
+</head>
+<body>
+    <h1>Calculadora de suma</h1>
+    <p class="descripcion">Introduce dos números y pulsa "Sumar" para ver el resultado.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="numero_a">Primer número</label>
+        <input id="numero_a" type="number" step="any" name="numero_a" value="{{ numero_a }}" required>
+
+        <label for="numero_b">Segundo número</label>
+        <input id="numero_b" type="number" step="any" name="numero_b" value="{{ numero_b }}" required>
+
+        <button type="submit">Sumar</button>
+    </form>
+
+    {% if mensaje_error %}
+        <div class="error">{{ mensaje_error }}</div>
+    {% elif resultado is not None %}
+        <div class="resultado">
+            <strong>Resultado:</strong> {{ resultado }}
+        </div>
+    {% endif %}
+
+    {% if operaciones %}
+        <section class="historial">
+            <h2>Últimas operaciones registradas</h2>
+            <ul class="historial__lista">
+                {% for operacion in operaciones %}
+                    <li class="historial__item">
+                        <span class="historial__marca-tiempo">
+                            {{ operacion.creado_en|date:"d/m/Y H:i" }}
+                        </span>
+                        {{ operacion.numero_a }} + {{ operacion.numero_b }} = <strong>{{ operacion.resultado }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+</body>
+</html>
