@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora de suma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem auto;
+            max-width: 480px;
+            line-height: 1.5;
+            color: #222;
+        }
+        form {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            background-color: #f8f8f8;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: #2c7be5;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: 0.3rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .resultado {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e6f4ea;
+            border: 1px solid #b7e0c2;
+            border-radius: 0.3rem;
+        }
+        .error {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #fdecea;
+            border: 1px solid #f5c2c0;
+            border-radius: 0.3rem;
+            color: #a61c17;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de suma</h1>
+    <p>Introduce dos números y pulsa "Sumar" para ver el resultado.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="numero_a">Primer número</label>
+        <input id="numero_a" type="number" step="any" name="numero_a" value="{{ numero_a }}" required>
+
+        <label for="numero_b">Segundo número</label>
+        <input id="numero_b" type="number" step="any" name="numero_b" value="{{ numero_b }}" required>
+
+        <button type="submit">Sumar</button>
+    </form>
+
+    {% if mensaje_error %}
+        <div class="error">{{ mensaje_error }}</div>
+    {% elif resultado is not None %}
+        <div class="resultado">
+            <strong>Resultado:</strong> {{ resultado }}
+        </div>
+    {% endif %}
+</body>
+</html>
