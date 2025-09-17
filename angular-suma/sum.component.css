@@ -1,0 +1,36 @@
+.sum-wrapper {
+  max-width: 320px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: #0d47a1;
+  box-shadow: 0 0.5rem 1.5rem rgba(13, 71, 161, 0.35);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f1f5f9;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #ff4d4f;
+}
+
+input[type='number'] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  text-align: center;
+}

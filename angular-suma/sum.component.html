@@ -1,0 +1,23 @@
+<div class="sum-wrapper">
+  <h1>Suma de dos números</h1>
+
+  <label>
+    Primer número
+    <input
+      type="number"
+      [value]="numberA"
+      (input)="updateNumberA($any($event.target).value)"
+    />
+  </label>
+
+  <label>
+    Segundo número
+    <input
+      type="number"
+      [value]="numberB"
+      (input)="updateNumberB($any($event.target).value)"
+    />
+  </label>
+
+  <p class="result">Resultado: {{ total }}</p>
+</div>
